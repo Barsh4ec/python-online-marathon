@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include 'inc/_navbar.html' %}
+<body background='../../media/photo/backgr.jpg'>
+<div class="w-75 p-3 opacity-90" style="background-color: #eee; margin-left: auto; margin-right: auto;">
+    <div class="row">
+        <form class="d-flex" action="{% url 'all_orders' %}" method="POST">
+            {% csrf_token %}
+            <div class="col col-lg-2">
+                {{ form.input }}
+            </div>
+            <div class="col col-lg-2">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </div>
+        </form>
+    </div>
+    <table class="table">
+        <tr>
+            <th>Book ID</th>
+            <th>User ID</th>
+            <th>User email</th>
+            <th>Book name</th>
+            <th>created_at</th>
+            <th>plated_end_at</th>
+            <th>end_at</th>
+        </tr>
+        {% for item in orders %}
+        <tr>
+            <th>{{ item.book.id }}</th>
+            <th>{{ item.user.id }}</th>
+            <th>{{ item.user.email }}</th>
+            <th>{{ item.book.name }}</th>
+            <th>{{ item.created_at }}</th>
+            <th>{{ item.plated_end_at }}</th>
+            {% if item.end_at == None %}
+            <th>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <button name="order_id" value="{{ item.id }}" class="btn btn-warning">Close</button>
+                </form>
+            </th>
+            {% else %}
+            <th>{{ item.end_at }}</th>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+{% endblock %}

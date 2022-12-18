@@ -2,5 +2,12 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Sprint12/om-39-team-49" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Sprint13/om-39-team-59" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Sprint14/om-39-team-35" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Sprint15/library" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Sprint16/library" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Sprint17" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Sprint9/unit_tests-Barsh4ec" vcs="Git" />
   </component>
 </project>

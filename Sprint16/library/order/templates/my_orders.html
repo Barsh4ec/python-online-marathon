@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'inc/_navbar.html' %}
+<body background='../../media/photo/backgr.jpg'>
+<div class="w-75 p-3 opacity-90" style="background-color: #eee; margin-left: auto; margin-right: auto;">
+    <table class="table">
+        <tr>
+            <th>book</th>
+            <th>user</th>
+            <th>created_at</th>
+            <th>plated_end_at</th>
+            <th>end_at</th>
+        </tr>
+        {% for item in orders %}
+        <tr>
+            <th>{{ item.book }}</th>
+            <th>{{ item.user }}</th>
+            <th>{{ item.created_at }}</th>
+            <th>{{ item.plated_end_at }}</th>
+            <th>{{ item.end_at }}</th>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+{% endblock %}

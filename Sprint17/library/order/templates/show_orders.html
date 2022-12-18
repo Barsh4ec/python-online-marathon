@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'inc/_navbar.html' %}
+<body background='../../media/photo/backgr.jpg'>
+<div class="w-75 p-3 opacity-90" style="background-color: #eee; margin-left: auto; margin-right: auto;">
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>First name</th>
+            <th>Middle name</th>
+            <th>Last name</th>
+            <th>Email</th>
+            <th>Created at</th>
+            <th>Role</th>
+        </tr>
+        <tr>
+            <th>{{ user.id }}</th>
+            <th>{{ user.first_name }}</th>
+            <th>{{ user.middle_name }}</th>
+            <th>{{ user.last_name }}</th>
+            <th>{{ user.email }}</th>
+            <th>{{ user.created_at }}</th>
+            {% if user.role == 0 %}
+            <th>Visitor</th>
+            {% else %}
+            <th>Librarian</th>
+            {% endif %}
+        </tr>
+    </table>
+</div>
+</body>
+{% endblock %}

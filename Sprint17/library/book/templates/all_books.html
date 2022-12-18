@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+.grid-item {
+  padding: 20px;
+  font-size: 14px;
+}
+
+</style>
+{% include 'inc/_navbar.html' %}
+<body background='../../media/photo/backgr.jpg'>
+<div class="w-75 p-3 opacity-90" style="background-color: #eee; margin-left: auto; margin-right: auto;">
+    <div class="row">
+
+        <form class="d-flex" action="{% url 'all_books' %}" method="POST">
+            {% csrf_token %}
+            <div class="col-md-auto">
+                {{ form.selector }}
+            </div>
+            <div class="col">
+                {{ form.input }}
+            </div>
+            <div class="col col-lg-2">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </div>
+        </form>
+    </div>
+    <div class="grid-container">
+        {% for item in books %}
+        <div class="grid-item">
+            <div class="card mb-3" style="max-width: 700px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        {% if item.photo %}
+                        <img src="{{ item.photo.url }}" alt="" width="200" class="mr-3">
+                        {% else %}
+                        <img src="https://picsum.photos/id/1060/350/235/?blur=2" alt="" class="mr-3">
+                        {% endif %}
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ item.name }}</h3>
+                            <h6 class="card-title">Count: {{ item.count }}</h6>
+                            <p class="card-text">{{ item.description|safe|linebreaks|truncatewords:20 }}</p>
+                            <a href="{{ item.pk }}" class="btn btn-dark">About book</a>
+                            <p class="card-text"><small class="text-muted">
+                                {% for author in item.authors.all.values %}
+                                {{ author.name }} {{ author.patronymic }} {{ author.surname }},
+                                {% endfor %}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</body>
+{% endblock %}

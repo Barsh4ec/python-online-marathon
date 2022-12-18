@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'inc/_navbar.html' %}
+<body background='../../media/photo/backgr.jpg'>
+<center><h1>{{ books_item.name }}</h1></center>
+<center><h4>{{ books_item.description }}</h4></center>
+<center>
+    {% for author in books_item.authors.all.values %}
+    {{ author.name }} {{ author.patronymic }} {{ author.surname }},
+    {% endfor %}
+</center>
+</body>
+{% endblock %}
